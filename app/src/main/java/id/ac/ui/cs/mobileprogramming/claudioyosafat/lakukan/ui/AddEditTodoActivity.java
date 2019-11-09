@@ -126,7 +126,7 @@ public class AddEditTodoActivity extends AppCompatActivity implements View.OnCli
 
             if (title.trim().isEmpty() || description.trim().isEmpty() ||
                     location.trim().isEmpty()) {
-                Toast.makeText(this, "Please insert a title, description, and location"
+                Toast.makeText(this, getResources().getString(R.string.todo_add_error)
                         , Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -148,7 +148,8 @@ public class AddEditTodoActivity extends AppCompatActivity implements View.OnCli
             setResult(RESULT_OK, data);
             finish();
         } else {
-            Toast.makeText(this, "Invalid time", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.todo_add_error_time),
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lakukan</string>
+    <string name="todo_title">Judul</string>
+    <string name="todo_description">Deskripsi</string>
+    <string name="todo_location">Lokasi</string>
+    <string name="todo_date">Tanggal</string>
+    <string name="todo_time">Waktu</string>
+    <string name="todo_time_reminder">Ingatkan saya sebelum (menit):</string>
+    <string name="todo_add_error">Mohon masukkan judul, deskripsi, dan lokasi</string>
+    <string name="todo_add_error_time">Kesalahan waktu</string>
+    <string name="todo_all_delete">Berhasil MENGHAPUS semua todo</string>
+    <string name="todo_delete">Berhasil menghapus sebuah todo</string>
+    <string name="todo_added">Menambahkan todo</string>
+    <string name="todo_update_failed">Gagal memperbaharui todo</string>
+    <string name="todo_updated_successed">Berhasil memperbaharui todo</string>
+    <string name="todo_not_saved">Todo tidak dapat disimpan</string>
+    <string name="todo_priority">Prioritas diperbaharui</string>
+</resources>

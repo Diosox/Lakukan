@@ -53,11 +53,12 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoHolder> {
         calTime.setTimeInMillis(currentTodo.getTime());
         calDate.setTimeInMillis(currentTodo.getDate());
 
-        holder.todoItemBinding.textViewDate.setText("( " +calTime.get(Calendar.HOUR_OF_DAY) + ":"
+        holder.todoItemBinding.textViewDate.setText("( " + calTime.get(Calendar.HOUR_OF_DAY) + ":"
                 + calTime.get(Calendar.MINUTE) + ", " + calDate.get(Calendar.DAY_OF_MONTH) +
                 "/" + calDate.get(Calendar.MONTH) + "/" + calDate.get(Calendar.YEAR) + " )"
         );
 
+        holder.todoItemBinding.isFavorite.setChecked(currentTodo.getPriority());
 
         holder.bind(currentTodo, todoListener);
     }

@@ -15,17 +15,18 @@ import id.ac.ui.cs.mobileprogramming.claudioyosafat.lakukan.ui.fragment.TodoDesc
 public class DescriptionActivity extends FragmentActivity {
 
     ActivityDescriptionBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_description);
-//        if(getResources().getConfiguration().orientation ==
-//                Configuration.ORIENTATION_LANDSCAPE) {
-//            finish();
-//            return;
-//        }
+        if (getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_LANDSCAPE) {
+            finish();
+            return;
+        }
 
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             TodoDescriptionFragment todoDescriptionFragment = new TodoDescriptionFragment();
             todoDescriptionFragment.setArguments(getIntent().getExtras());
             FragmentManager fragmentManager = getSupportFragmentManager();

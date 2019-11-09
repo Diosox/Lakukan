@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Lakukan</string>
+    <string name="todo_title">Title</string>
+    <string name="todo_description">Description</string>
+    <string name="todo_location">Location</string>
+    <string name="todo_date">Date</string>
+    <string name="todo_time">Time</string>
+    <string name="todo_time_reminder">Remind Me Before (minutes):</string>
+    <string name="todo_add_error">Please insert a title, description, and location</string>
+    <string name="todo_add_error_time">Invalid time</string>
+    <string name="todo_all_delete">Success DELETE all todos</string>
+    <string name="todo_delete">Success delete todo</string>
+    <string name="todo_added">Todo added</string>
+    <string name="todo_update_failed">Failed update todo</string>
+    <string name="todo_updated_successed">Successed update todo</string>
+    <string name="todo_not_saved">Todo not saved</string>
+    <string name="todo_priority">Priority Updated</string>
 </resources>

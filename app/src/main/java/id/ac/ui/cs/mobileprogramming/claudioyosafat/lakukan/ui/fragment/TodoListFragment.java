@@ -52,7 +52,6 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
     private TodoSwipe todoSwipe;
 
     private boolean dualPane;
-    int checkCurrPosition = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,9 +77,6 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
 
         dualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
-        Log.v("DualPaneUy", String.valueOf(dualPane));
-        Toast.makeText(getActivity(), String.valueOf(dualPane), Toast.LENGTH_SHORT);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
@@ -105,7 +101,7 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
                 todoAdapter.notifyItemRemoved(position);
                 todoAdapter.notifyItemRangeChanged(position, todoAdapter.getItemCount());
                 cancelAlarm(todo, todo.getId());
-                Toast.makeText(getActivity(), "DELETE", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), getResources().getString(R.string.todo_delete), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -134,14 +130,6 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        outState.putInt("curChoice", checkCurrPosition);
-    }
-
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -166,13 +154,15 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
                 e.printStackTrace();
             }
 
-            Toast.makeText(getActivity(), "Todo saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.todo_added)
+                    , Toast.LENGTH_SHORT).show();
         } else if (requestCode == EDIT_TODO_REQUEST && resultCode == getActivity().RESULT_OK) {
 
             int id = data.getIntExtra(AddEditTodoActivity.EXTRA_ID, -1);
 
             if (id == -1) {
-                Toast.makeText(getActivity(), "Todo can't be updated", Toast.LENGTH_SHORT);
+                Toast.makeText(getActivity(), getResources().getString(R.string.todo_update_failed),
+                        Toast.LENGTH_SHORT);
             }
 
             String title = data.getStringExtra(AddEditTodoActivity.EXTRA_TITLE);
@@ -190,9 +180,11 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
             startAlarm(time, date, todo, id);
             todoViewModel.update(todo);
 
-            Toast.makeText(getActivity(), "Todo updated", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.todo_updated_successed)
+                    , Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getActivity(), "Todo not saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), getResources().getString(R.string.todo_not_saved)
+                    , Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -229,14 +221,14 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
 
     @Override
     public void onFavClick(Todo todo) {
-        Log.v("Fav Click", "YEAY MSK FAV CLICK");
         if (todo.getPriority()) {
             todo.setPriority(false);
         } else {
             todo.setPriority(true);
         }
         todoViewModel.update(todo);
-        Toast.makeText(getActivity(), "Priority Update", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), getResources().getString(R.string.todo_priority),
+                Toast.LENGTH_SHORT).show();
     }
 
     private void startAlarm(long time, long date, Todo todo, long todoId) {
