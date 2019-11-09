@@ -79,6 +79,7 @@ public class TodoListFragment extends Fragment implements OnTodoClickListener, O
         dualPane = detailsFrame != null && detailsFrame.getVisibility() == View.VISIBLE;
 
         Log.v("DualPaneUy", String.valueOf(dualPane));
+        Toast.makeText(getActivity(), String.valueOf(dualPane), Toast.LENGTH_SHORT);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         binding.recyclerView.setHasFixedSize(true);
